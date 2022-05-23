@@ -1,18 +1,26 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './Navigation.css'
 
 const Navigation = () => {
-
+    // Navigation Items
     const menuItems = <>
-        <li><a>Home</a></li>
-        <li><a>Shop</a></li>
-        <li><a>Blog</a></li>
-        <li><a>My Orders</a></li>
-        <li><a>Add A Review</a></li>
-        <li><a>Profile</a></li>
-        <li><a>Dashboard</a></li>
+        <li><Link to={'/'}>Home</Link></li>
+        <li><Link to={'/shop'}>Shop</Link></li>
+        <li><Link to={'/blog'}>Blog</Link></li>
+        <li><Link to={'/my-orders'}>My Orders</Link></li>
+        <li><Link to={'/add-review'}>Add a Review</Link></li>
+        <li><Link to={'/profile'}>Profile</Link></li>
+        <li><Link to={'/dashboard'}>Dashboard</Link></li>
         <li><button>Log In</button></li>
     </>
+    // Use Navigate from Reack router
+    const navigate = useNavigate();
+    // Logo Click handlar 
+    const logoClick = () =>{
+        navigate('/');
+    }
+
         
     
     return (
@@ -27,7 +35,7 @@ const Navigation = () => {
                 </ul>
               </div>
               <div>
-              <a className="btn btn-ghost normal-case text-xl border border-slate-100">WholeSale.<span><small className='text-xs'>shop</small></span></a>
+              <button onClick={logoClick} className="btn btn-ghost normal-case text-xl border border-slate-100">WholeSale.<span><small className='text-xs'>shop</small></span></button>
               </div>
             </div>
             <div className="navbar-end hidden lg:flex">
