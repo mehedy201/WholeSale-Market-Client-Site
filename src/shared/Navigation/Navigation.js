@@ -12,7 +12,7 @@ const Navigation = () => {
         <li><Link to={'/add-review'}>Add a Review</Link></li>
         <li><Link to={'/profile'}>Profile</Link></li>
         <li><Link to={'/dashboard'}>Dashboard</Link></li>
-        <li><button>Log In</button></li>
+        <li><button><Link to={'log-in'}>Log In</Link></button></li>
     </>
     // Use Navigate from Reack router
     const navigate = useNavigate();
@@ -35,7 +35,7 @@ const Navigation = () => {
                 </ul>
               </div>
               <div>
-              <button onClick={logoClick} className="btn btn-ghost normal-case text-xl border border-slate-100">WholeSale.<span><small className='text-xs'>shop</small></span></button>
+              <button onClick={logoClick} className="btn btn-ghost normal-case text-xl border border-slate-100">Whole<span className='text-neutral'>S</span>ale<span className='text-neutral'>.</span><span><small className='text-xs'>shop</small></span></button>
               </div>
             </div>
             <div className="navbar-end hidden lg:flex">

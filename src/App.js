@@ -1,6 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import AddReview from './pages/AddReview/AddReview';
+import Blog from './pages/Blog/Blog';
+import Dashboard from './pages/Dashboard/Dashboard';
 import Home from './pages/Home/Home';
+import LogIn from './pages/LogIn/LogIn';
+import SingUp from './pages/LogIn/SingUp/SingUp';
+import MyOrders from './pages/MyOrders/MyOrders';
+import Profile from './pages/Profile/Profile';
+import Shop from './pages/Shop/Shop';
+import Footer from './shared/Footer/Footer';
 import Navigation from './shared/Navigation/Navigation';
 
 function App() {
@@ -11,14 +20,17 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>}></Route>
           <Route path='/home' element={<Home/>}></Route>
-          <Route path='/shop' element={<Home/>}></Route>
-          <Route path='/blog' element={<Home/>}></Route>
-          <Route path='/my-orders' element={<Home/>}></Route>
-          <Route path='/add-review' element={<Home/>}></Route>
-          <Route path='/profile' element={<Home/>}></Route>
-          <Route path='/dashboard' element={<Home/>}></Route>
+          <Route path='/shop' element={<Shop/>}></Route>
+          <Route path='/blog' element={<Blog/>}></Route>
+          <Route path='/my-orders' element={<MyOrders/>}></Route>
+          <Route path='/add-review' element={<AddReview/>}></Route>
+          <Route path='/profile' element={<Profile/>}></Route>
+          <Route path='/dashboard' element={<Dashboard/>}></Route>
+          <Route path='/log-in' element={<LogIn/>}></Route>
+          <Route path='/sing-up' element={<SingUp/>}></Route>
         </Routes>
       </div>
+      <Footer></Footer>
     </div>
   );
 }
