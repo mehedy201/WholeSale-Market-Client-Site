@@ -5,7 +5,7 @@ import auth from "../../firebase.init";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Spinner from "../../shared/Spinner/Spinner";
 import { useForm } from "react-hook-form";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const LogIn = () => {
@@ -86,7 +86,7 @@ const LogIn = () => {
                             {errors.password?.type === 'minLength' && <span className="text-red-500">{errors.password.message}</span>}
                          </label>
                          {/* ------------------ Submit Button ------------------ */}
-                         <input className="btn" type="submit" value={'Log In'}/>
+                         <input className="btn rounded-full w-[50%] mx-auto" type="submit" value={'Log In'}/>
                     </div>
                 </form>
                 {/* ------------------ Navigate sign up handle ------------------ */}
@@ -102,12 +102,12 @@ const LogIn = () => {
               {/* Google Sign In  */}
                 <button 
                     onClick={() => signInWithGoogle()} 
-                    className="btn btn-sm bg-secondary border-none rounded-full">
+                    className="btn w-[90%] mx-auto btn-sm bg-secondary border-none rounded-full">
                     <span><img width={22} className='h-auto mx-4' src={googleIcon} alt="" /></span>
                     Continue to Google</button>
                 {/* GitHUb Sign In  */}
                 <button 
-                    className="btn btn-sm bg-secondary border-none rounded-full">
+                    className="btn w-[90%] mx-auto btn-sm bg-secondary border-none rounded-full">
                     <span><img width={22} className='h-auto mx-4' src={githubIcon} alt="" /></span> 
                     Continue to GitHub</button>
             </div>
