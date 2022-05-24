@@ -12,7 +12,7 @@ const Navigation = () => {
         <li><Link to={'/add-review'}>Add a Review</Link></li>
         <li><Link to={'/profile'}>Profile</Link></li>
         <li><Link to={'/dashboard'}>Dashboard</Link></li>
-        <li><button><Link to={'log-in'}>Log In</Link></button></li>
+        <li><Link to={'/log-in'}>Log In</Link></li>
     </>
     // Use Navigate from Reack router
     const navigate = useNavigate();
