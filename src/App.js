@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import './App.css';
 import AddReview from './pages/AddReview/AddReview';
 import Blog from './pages/Blog/Blog';
@@ -27,9 +28,10 @@ function App() {
           <Route path='/profile' element={<Profile/>}></Route>
           <Route path='/dashboard' element={<Dashboard/>}></Route>
           <Route path='/log-in' element={<LogIn/>}></Route>
-          <Route path='/sing-up' element={<SingUp/>}></Route>
+          <Route path='/sign-up' element={<SingUp/>}></Route>
         </Routes>
       </div>
+      <ToastContainer></ToastContainer>
       <Footer></Footer>
     </div>
   );

@@ -1,8 +1,22 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
+import Spinner from '../Spinner/Spinner';
+import { signOut } from 'firebase/auth';
 import './Navigation.css'
 
 const Navigation = () => {
+    const [user, loading] = useAuthState(auth);
+    if(loading){
+      return <Spinner></Spinner>
+    }
+
+    // Sign Out button 
+    const singOutButton = () => {
+      signOut(auth);
+    }
+
     // Navigation Items
     const menuItems = <>
         <li><Link to={'/'}>Home</Link></li>
@@ -12,14 +26,18 @@ const Navigation = () => {
         <li><Link to={'/add-review'}>Add a Review</Link></li>
         <li><Link to={'/profile'}>Profile</Link></li>
         <li><Link to={'/dashboard'}>Dashboard</Link></li>
-        <li><Link to={'/log-in'}>Log In</Link></li>
+        {
+          user? <li><button onClick={singOutButton}>Sing Out</button></li>
+          :
+          <li><Link to={'/log-in'}>Log In</Link></li>
+        }
     </>
     // Use Navigate from Reack router
-    const navigate = useNavigate();
-    // Logo Click handlar 
-    const logoClick = () =>{
-        navigate('/');
-    }
+    // const navigate = useNavigate();
+    // // Logo Click handlar 
+    // const logoClick = () =>{
+    //     navigate('/');
+    // }
 
         
     
@@ -35,7 +53,7 @@ const Navigation = () => {
                 </ul>
               </div>
               <div>
-              <button onClick={logoClick} className="btn btn-ghost normal-case text-xl border border-slate-100">Whole<span className='text-neutral'>S</span>ale<span className='text-neutral'>.</span><span><small className='text-xs'>shop</small></span></button>
+              <button className="btn btn-ghost normal-case text-xl border border-slate-100">Whole<span className='text-neutral'>S</span>ale<span className='text-neutral'>.</span><span><small className='text-xs'>shop</small></span></button>
               </div>
             </div>
             <div className="navbar-end hidden lg:flex">

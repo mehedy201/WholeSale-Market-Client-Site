@@ -2,37 +2,52 @@ import React from "react";
 import googleIcon from '../../images/social-icon/google.png'
 import githubIcon from '../../images/social-icon/github.png'
 import auth from "../../firebase.init";
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Spinner from "../../shared/Spinner/Spinner";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 
 const LogIn = () => {
-    // Google Sign In
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    // Use Navigate --------------
+    const navigate = useNavigate()
 
+    // Login by email and password using Firebase hooks --------------
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useSignInWithEmailAndPassword(auth);
+    // Google Sign In --------------
+    const [signInWithGoogle, goUser, goLoading, goError] = useSignInWithGoogle(auth);
 
+    // Use React hooks form  --------------
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const onSubmit = data =>{
+        signInWithEmailAndPassword(data.email, data.password)
+        reset();
+    };
 
-
-    // Use React hooks form
-    const { register, formState: { errors }, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
-
-
-
-
-
-    if(user){
-        console.log(user);
-    }
+    //   Condition User, Loading and Error --------------
     let load;
-    if(loading){
+    if(loading || goLoading){
         load = <Spinner></Spinner>
+        return load;
+    }
+    if(user || goUser){
+        navigate('/')
     }
     let logInError;
-    if(error){
-        logInError = <p className="text-neutral">{error.message}</p>;
+    if(error || goError){
+        logInError = <p className="text-red-500">{error?.message} {goError?.message}</p>;
     }
+
+    // Sing Up Button Navigate 
+    const singUpButton = () => {
+        navigate('/sign-up')
+    }
+
   return (
       <div className="flex h-screen justify-center items-center">
           <div className="card w-96 bg-base-100 shadow-xl border ">
@@ -68,10 +83,15 @@ const LogIn = () => {
                             {errors.password?.type === 'minLength' && <span className="text-red-500">{errors.password.message}</span>}
                          </label>
                          {/* ------------------ Submit Button ------------------ */}
-                         <input onClick={onSubmit} className="btn" type="submit" value={'Log In'}/>
+                         <input className="btn" type="submit" value={'Log In'}/>
                     </div>
                 </form>
-
+                {/* ------------------ Navigate sign up handle ------------------ */}
+                <p>Don't have account Please <button 
+                    onClick={singUpButton} 
+                    className="btn btn-sm text-blue-500 btn-link py-0"
+                    >Sign Up</button></p>
+                    {/* Load Spinner and Error Meassge  */}
                 {load}
                 {logInError}
               <div className="divider">OR</div>
