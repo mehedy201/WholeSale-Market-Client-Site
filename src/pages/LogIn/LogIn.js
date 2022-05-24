@@ -5,7 +5,7 @@ import auth from "../../firebase.init";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Spinner from "../../shared/Spinner/Spinner";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 
 const LogIn = () => {
@@ -29,14 +29,17 @@ const LogIn = () => {
         reset();
     };
 
+    // Use location 
+    const location = useLocation()
+    let from = location.state?.from?.pathname || "/";
+    
     //   Condition User, Loading and Error --------------
     let load;
     if(loading || goLoading){
         load = <Spinner></Spinner>
-        return load;
     }
     if(user || goUser){
-        navigate('/')
+        return navigate(from, { replace: true });
     }
     let logInError;
     if(error || goError){

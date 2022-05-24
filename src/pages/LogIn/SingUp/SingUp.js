@@ -3,7 +3,7 @@ import Spinner from "../../../shared/Spinner/Spinner";
 import { useForm } from "react-hook-form";
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const SingUp = () => {
@@ -29,15 +29,16 @@ const SingUp = () => {
         reset();
     };
 
+
+    const location = useLocation()
+    let from = location.state?.from?.pathname || "/";
     //   Condition User, Loading and Error --------------
     let load;
     if(loading || updating){
         load = <Spinner></Spinner>
-        return load;
     }
     if(user){
-        console.log(user);
-        navigate('/')
+        navigate(from, { replace: true });
     }
     let logInError;
     if(error || updateError){

@@ -6,6 +6,7 @@ import Blog from './pages/Blog/Blog';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Home from './pages/Home/Home';
 import LogIn from './pages/LogIn/LogIn';
+import RequirAuth from './pages/LogIn/RequirAuth';
 import SingUp from './pages/LogIn/SingUp/SingUp';
 import MyOrders from './pages/MyOrders/MyOrders';
 import Profile from './pages/Profile/Profile';

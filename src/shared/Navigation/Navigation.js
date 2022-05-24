@@ -22,9 +22,13 @@ const Navigation = () => {
         <li><Link to={'/'}>Home</Link></li>
         <li><Link to={'/shop'}>Shop</Link></li>
         <li><Link to={'/blog'}>Blog</Link></li>
-        <li><Link to={'/my-orders'}>My Orders</Link></li>
-        <li><Link to={'/add-review'}>Add a Review</Link></li>
-        <li><Link to={'/profile'}>Profile</Link></li>
+        {
+          user && <>
+            <li><Link to={'/my-orders'}>My Orders</Link></li>
+            <li><Link to={'/add-review'}>Add a Review</Link></li>
+            <li><Link to={'/profile'}>Profile</Link></li>
+          </>
+        }
         <li><Link to={'/dashboard'}>Dashboard</Link></li>
         {
           user? <li><button onClick={singOutButton}>Sing Out</button></li>
