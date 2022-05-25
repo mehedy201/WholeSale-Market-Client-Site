@@ -6,6 +6,7 @@ import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-fireba
 import Spinner from "../../shared/Spinner/Spinner";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
+import useToken from "../../hooks/useToken";
 
 
 const LogIn = () => {
@@ -29,6 +30,9 @@ const LogIn = () => {
         reset();
     };
 
+    // Custom Token
+    const [token] = useToken(user || goUser);
+
     // Use location 
     const location = useLocation()
     let from = location.state?.from?.pathname || "/";
@@ -39,10 +43,10 @@ const LogIn = () => {
         load = <Spinner></Spinner>
     }
     useEffect(() => {
-        if(user || goUser){
+        if(token){
             return navigate(from, { replace: true });
         }
-    }, [user, goUser]);
+    }, [token]);
 
     let logInError;
     if(error || goError){

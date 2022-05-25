@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { useLocation, useNavigate } from 'react-router-dom';
+import useToken from '../../../hooks/useToken';
 
 
 const SingUp = () => {
@@ -19,6 +20,9 @@ const SingUp = () => {
       ] = useCreateUserWithEmailAndPassword(auth);
     // Update Profile
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+    // CustomHooks
+    const [token] = useToken(user);
 
     // Use React hooks form  --------------
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -38,10 +42,10 @@ const SingUp = () => {
         load = <Spinner></Spinner>
     }
     useEffect(() => {
-        if(user){
+        if(token){
             return navigate(from, { replace: true });
         }
-    }, [user]);
+    }, [token]);
     
     let logInError;
     if(error || updateError){
