@@ -1,8 +1,9 @@
 import React from 'react';
 
-const Product = ({product}) => {
+const Product = ({product, setAddedForModal}) => {
 
     const {name, des, img, price, quantity} = product;
+    
     return (
 
             <div className="card bg-base-100 shadow-xl">
@@ -13,7 +14,10 @@ const Product = ({product}) => {
                   <p>Quantity: {quantity}</p>
                   <p>Price Per pich: {price}</p>
                   <div className="card-actions justify-end">
-                    <label htmlFor="wholeSale_modal" class="btn modal-button capitalize">Added Orders</label>
+                    <label 
+                        onClick={() => setAddedForModal(product)} 
+                        htmlFor="wholeSale_modal" 
+                        className="btn modal-button capitalize">Added Orders</label>
                   </div>
                 </div>
             </div>

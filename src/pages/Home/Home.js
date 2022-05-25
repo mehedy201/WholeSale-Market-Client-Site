@@ -2,15 +2,25 @@ import React, { useEffect, useState } from 'react';
 import './Home.css'
 import heroImg from '../../images/heroimg.jpeg'
 import Product from '../Shop/Product';
+import PurcessModal from '../Shop/PurcessModal';
+import { useNavigate } from 'react-router-dom';
+import AboutCompany from './AboutCompany';
 
 const Home = () => {
+    // useState for product
     const [products, setProducts] = useState([]);
+    const [addedForModal, setAddedForModal] = useState(null);
+    // Use effect and fetch product
     useEffect(() => {
         fetch('data.json')
             .then(res => res.json())
             .then(data => setProducts(data));
     }, []);
-    console.log(products.slice(3));
+
+    // Navigate Shop page
+    const navigate = useNavigate();
+   
+
     return (
         <div>
             <div className="hero min-h-screen">
@@ -33,11 +43,20 @@ const Home = () => {
                             <Product
                                 key={product.id}
                                 product={product}
+                                setAddedForModal={setAddedForModal}
                                 ></Product>
                         )
                     }
                 </div>
+                <button onClick={() => navigate('/shop')} className='btn mb-12 block mx-auto capitalize'>All Products</button>
+                {
+                    addedForModal && <PurcessModal 
+                    key={addedForModal.id}
+                    addedForModal={addedForModal}
+                ></PurcessModal>
+            }
             </div>
+            <AboutCompany></AboutCompany>
         </div>
     );
 };
