@@ -1,25 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
-import auth from '../../firebase.init';
+import PurcessModal from '../Shop/PurcessModal';
 
 const SingleProduct = () => {
     // Use Params
     const {id} = useParams();
     // Get User Data from authState 
-    const [user] = useAuthState(auth);
-
 
     // Get Single Product data from server using id 
-    const [product, setProduct] = useState([]);
+    const [products, setProducts] = useState({});
+    const [modalProducts, setModalProducts] = useState({})
     // Load Data
     useEffect(() => {
         fetch(`http://localhost:5000/products/${id}`)
             .then(res => res.json())
-            .then(data => setProduct(data));
+            .then(data => setProducts(data));
     },[])
+
+    // Use Effect for modal
+    useEffect(() => {
+        fetch(`http://localhost:5000/products/${id}`)
+            .then(res => res.json())
+            .then(data => setModalProducts(data));
+    },[])
+
     // Distructuring Data
-    const {name, img, des, quantity, price} = product;
+    const {name, img, des, quantity, price} = products;
+
+
 
     return (
         <div>
@@ -37,25 +45,12 @@ const SingleProduct = () => {
                         className="btn modal-button capitalize mt-2 shadow-md">Added Orders</label>
                 </div>
             </div>
-
-            <div>
-                <input type="checkbox" id="wholeSale_modal" className="modal-toggle" />
-                <div className="modal modal-bottom sm:modal-middle">
-                  <div className="modal-box relative">
-                    <label htmlFor="wholeSale_modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                        <h2 className='text-center text-2xl font-bold'>Please Added Product</h2>
-                        <p className='text-center mb-4'>If You added product after that go to my order page and pay</p>
-                        <form>
-                            <input disabled type="text" value={name} className="input w-full input-bordered mb-2" readOnly required/>
-                            <input disabled type="text" value={user?.displayName} className="input w-full input-bordered mb-2" required/>
-                            <input disabled type="text" value={user?.email} className="input w-full input-bordered mb-2" required/>
-                            <input type="number" placeholder="Type Quantity (minimum 100)" className="input w-full input-bordered mb-2" />
-                            <input type="number" placeholder="Type Your Phone Number" className="input w-full input-bordered mb-2" />
-                            <label htmlFor="wholeSale_modal" className="btn btn-sm capitalize float-right">Added</label>
-                        </form>
-                  </div>
-                </div>
-            </div>
+            {/* ---------Modal------------  */}
+            <PurcessModal 
+                key={modalProducts._id} 
+                modalProducts={modalProducts} 
+                setModalProducts={setModalProducts}
+             ></PurcessModal>
         </div>
     );
 };

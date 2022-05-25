@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import './Home.css'
 import heroImg from '../../images/heroimg.jpeg'
 import Product from '../Shop/Product';
-import PurcessModal from '../Shop/PurcessModal';
 import { useNavigate } from 'react-router-dom';
 import AboutCompany from './AboutCompany';
 import Carousel from './Carousel';
@@ -10,7 +9,6 @@ import Carousel from './Carousel';
 const Home = () => {
     // useState for product
     const [products, setProducts] = useState([]);
-    const [addedForModal, setAddedForModal] = useState(null);
     // Use effect and fetch product
     useEffect(() => {
         fetch('http://localhost:5000/products')
@@ -44,18 +42,17 @@ const Home = () => {
                             <Product
                                 key={product._id}
                                 product={product}
-                                setAddedForModal={setAddedForModal}
                                 ></Product>
                         )
                     }
                 </div>
                 <button onClick={() => navigate('/shop')} className='btn mb-12 block mx-auto capitalize'>All Products</button>
-                {
+                {/* {
                     addedForModal && <PurcessModal 
                     key={addedForModal._id}
                     addedForModal={addedForModal}
                 ></PurcessModal>
-            }
+            } */}
             </div>
             <AboutCompany></AboutCompany>
             <Carousel></Carousel>

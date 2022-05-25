@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
 import './App.css';
 import AddReview from './pages/AddReview/AddReview';
 import Blog from './pages/Blog/Blog';
@@ -15,6 +14,7 @@ import Navigation from './shared/Navigation/Navigation';
 import PageNotFound from './pages/PageNotFound';
 import SingleProduct from './pages/SingleProducts/SingleProduct';
 import RequirAuth from './pages/LogIn/RequirAuth';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -39,8 +39,8 @@ function App() {
           }></Route>
           <Route path='*' element={<PageNotFound/>}></Route>
         </Routes>
+        <ToastContainer></ToastContainer>
       </div>
-      <ToastContainer></ToastContainer>
       <Footer></Footer>
     </div>
   );
