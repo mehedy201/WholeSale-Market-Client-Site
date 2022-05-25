@@ -5,8 +5,10 @@ import PurcessModal from './PurcessModal';
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [addedForModal, setAddedForModal] = useState(null);
+
     useEffect(() => {
-        fetch('data.json')
+        // http://localhost:5000/products
+        fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => setProducts(data));
     }, [])
@@ -17,15 +19,17 @@ const Shop = () => {
             <div className='my-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12'>
                 {
                     products.map(product => <Product 
-                        key={product.id} 
+                        key={product._id} 
                         product={product}
-                        setAddedForModal={setAddedForModal}
                     ></Product>)
                 }
             </div>
+
+
+            {/* For Modal  */}
             {
             addedForModal && <PurcessModal 
-                key={addedForModal.id}
+                key={addedForModal._id}
                 addedForModal={addedForModal}
             ></PurcessModal>
             }

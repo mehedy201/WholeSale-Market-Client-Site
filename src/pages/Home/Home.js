@@ -5,6 +5,7 @@ import Product from '../Shop/Product';
 import PurcessModal from '../Shop/PurcessModal';
 import { useNavigate } from 'react-router-dom';
 import AboutCompany from './AboutCompany';
+import Carousel from './Carousel';
 
 const Home = () => {
     // useState for product
@@ -12,7 +13,7 @@ const Home = () => {
     const [addedForModal, setAddedForModal] = useState(null);
     // Use effect and fetch product
     useEffect(() => {
-        fetch('data.json')
+        fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => setProducts(data));
     }, []);
@@ -41,7 +42,7 @@ const Home = () => {
                     {
                         products.slice(3).map(product => 
                             <Product
-                                key={product.id}
+                                key={product._id}
                                 product={product}
                                 setAddedForModal={setAddedForModal}
                                 ></Product>
@@ -51,12 +52,13 @@ const Home = () => {
                 <button onClick={() => navigate('/shop')} className='btn mb-12 block mx-auto capitalize'>All Products</button>
                 {
                     addedForModal && <PurcessModal 
-                    key={addedForModal.id}
+                    key={addedForModal._id}
                     addedForModal={addedForModal}
                 ></PurcessModal>
             }
             </div>
             <AboutCompany></AboutCompany>
+            <Carousel></Carousel>
         </div>
     );
 };

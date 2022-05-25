@@ -1,11 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Product = ({product, setAddedForModal}) => {
-
-    const {name, des, img, price, quantity} = product;
+const Product = ({product}) => {
     
-    return (
+    const navigate = useNavigate();
+    const navigateSingleProduct = (id) => {
+        navigate(`/product/${id}`);
+    }
 
+    const { _id, name, des, img, price, quantity} = product;
+
+    return (
             <div className="card bg-base-100 shadow-xl">
                 <figure><img className="h-[250px] w-[100%]" src={img} alt="Shoes" /></figure>
                 <div className="card-body">
@@ -15,8 +20,7 @@ const Product = ({product, setAddedForModal}) => {
                   <p>Price Per pich: {price}</p>
                   <div className="card-actions justify-end">
                     <label 
-                        onClick={() => setAddedForModal(product)} 
-                        htmlFor="wholeSale_modal" 
+                        onClick={() => navigateSingleProduct(_id)} 
                         className="btn modal-button capitalize">Added Orders</label>
                   </div>
                 </div>
