@@ -12,7 +12,7 @@ const Shop = () => {
     return (
         <>
         <h3 className="text-2xl text-center font-bold">Shop</h3>
-            <div className='my-12 grid grid-cols-3 gap-12'>
+            <div className='my-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12'>
                 {
                     products.map(product => <Product 
                         key={product.id} 
