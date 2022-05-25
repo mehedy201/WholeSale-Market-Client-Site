@@ -1,10 +1,22 @@
 import React from 'react';
 import './Home.css'
+import heroImg from '../../images/heroimg.jpeg'
 
 const Home = () => {
     return (
         <div>
-            <h1>This is home</h1>
+            <div className="hero min-h-screen">
+                <div className="hero-content flex-col lg:flex-row-reverse">
+                  <div className="flex-1">
+                      <img src={heroImg} className="rounded-lg" alt='Hero_image'/>
+                  </div>
+                  <div className='flex-1 pe-12'>
+                    <h1 className="text-5xl font-bold">Best Glue gun 2022!</h1>
+                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <button className="btn btn-primary">Get Started</button>
+                  </div>
+                </div>
+            </div>
         </div>
     );
 };

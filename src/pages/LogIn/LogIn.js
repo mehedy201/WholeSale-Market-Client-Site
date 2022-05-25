@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import googleIcon from '../../images/social-icon/google.png'
 import githubIcon from '../../images/social-icon/github.png'
 import auth from "../../firebase.init";
@@ -38,9 +38,12 @@ const LogIn = () => {
     if(loading || goLoading){
         load = <Spinner></Spinner>
     }
-    if(user || goUser){
-        return navigate(from, { replace: true });
-    }
+    useEffect(() => {
+        if(user || goUser){
+            return navigate(from, { replace: true });
+        }
+    }, [user, goUser]);
+
     let logInError;
     if(error || goError){
         logInError = <p className="text-red-500">{error?.message} {goError?.message}</p>;

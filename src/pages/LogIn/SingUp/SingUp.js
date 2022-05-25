@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Spinner from "../../../shared/Spinner/Spinner";
 import { useForm } from "react-hook-form";
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
@@ -37,9 +37,12 @@ const SingUp = () => {
     if(loading || updating){
         load = <Spinner></Spinner>
     }
-    if(user){
-        navigate(from, { replace: true });
-    }
+    useEffect(() => {
+        if(user){
+            return navigate(from, { replace: true });
+        }
+    }, [user]);
+    
     let logInError;
     if(error || updateError){
         logInError = <p className="text-red-500">{error?.message} {updateError?.message}</p>;

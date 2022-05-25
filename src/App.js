@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import './App.css';
 import AddReview from './pages/AddReview/AddReview';
 import Blog from './pages/Blog/Blog';
-import Dashboard from './pages/Dashboard/Dashboard';
+import Dashboard from './pages/Admin-Pages/Dashboard/Dashboard';
 import Home from './pages/Home/Home';
 import LogIn from './pages/LogIn/LogIn';
 import RequirAuth from './pages/LogIn/RequirAuth';
