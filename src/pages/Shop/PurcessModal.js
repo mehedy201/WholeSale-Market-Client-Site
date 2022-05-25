@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const PurcessModal = ({modalProducts, setModalProducts}) => {
-    const {name, price} = modalProducts;
+    const {name, price, img} = modalProducts;
     // console.log(product);
 
     // // Get User Details from firebase 
@@ -19,7 +19,7 @@ const PurcessModal = ({modalProducts, setModalProducts}) => {
             return alert('please add 100+ itms becouse its wholesale market')
         }
         const userPhone = event.target.user_phone.value;
-        const orderdedUserData = {name, userName, userEmail, price, quantity, userPhone };
+        const orderdedUserData = {name, userName, userEmail, price, quantity, userPhone, img};
 
 
         fetch('http://localhost:5000/user-orderd-data',{
@@ -31,9 +31,14 @@ const PurcessModal = ({modalProducts, setModalProducts}) => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
+            if(data.success){
+                toast('Added product your Order Page')
+            }
+            else{
+                toast.error('All ready you added this product')
+            }
             setModalProducts({});
-            toast('Send Data')
         })
 
     }
@@ -50,10 +55,13 @@ const PurcessModal = ({modalProducts, setModalProducts}) => {
                             <input name='product_name' disabled type="text" value={name} className="input w-full input-bordered mb-2" readOnly/>
                             <input name='user_name' disabled type="text" value={user?.displayName} className="input w-full input-bordered mb-2" readOnly/>
                             <input name='user_email' disabled type="text" value={user?.email} className="input w-full input-bordered mb-2" readOnly/>
+                            <input name='user_email' disabled type="text" value={img} className="input w-full input-bordered mb-2 input-sm" readOnly/>
                             <input name='price' disabled type="text" value={price} className="input w-full input-bordered mb-2" readOnly/>
                             <input name='quantity' type="number" placeholder="Type Quantity (minimum 100)" className="input w-full input-bordered mb-2" />
                             <input name='user_phone' type="number" placeholder="Type Your Phone Number" className="input w-full input-bordered mb-2" />
-                            <button type='submit' htmlFor="wholeSale_modal" className="btn btn-sm capitalize float-right">Added</button>
+                            <div className='mb-2'>
+                            <button type='submit' htmlFor="wholeSale_modal" className="btn btn-sm capitalize float-right mb-2">Added</button>
+                            </div>
                         </form>
                   </div>
                 </div>

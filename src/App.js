@@ -15,6 +15,7 @@ import PageNotFound from './pages/PageNotFound';
 import SingleProduct from './pages/SingleProducts/SingleProduct';
 import RequirAuth from './pages/LogIn/RequirAuth';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
