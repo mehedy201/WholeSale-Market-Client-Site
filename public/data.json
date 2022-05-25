@@ -5,7 +5,7 @@
         "des": "Protect delicate materials - use the low-temp option to preserve fabrics, papers, and Styrofoam",
         "img": "https://i.ibb.co/MZhk6Mz/glueGun5.jpg",
         "price": 21,
-        "Quantity": 200
+        "quantity": 200
     },
     {
         "id": 2,
@@ -13,7 +13,7 @@
         "des": "We provide a high quality of FLICKER Electric Hot Glue Gun 100 WATT  with high temperature resistance thermal polymer.",
         "img": "https://i.ibb.co/vv5nNCV/glueGun6.jpg",
         "price": 19,
-        "Quantity": 200
+        "quantity": 200
     },
     {
         "id": 3,
@@ -21,7 +21,7 @@
         "des": "We “Jainone Hub” are quality based firm, dedicatedly engaged as the manufacturer, exporter, importer and trader of Medwakh Pipe",
         "img": "https://i.ibb.co/LNXg67k/glueGun4.jpg",
         "price": 29,
-        "Quantity": 200
+        "quantity": 200
     },
     {
         "id": 4,
@@ -29,7 +29,7 @@
         "des": "Comfort grip and trigger feed make this mini hot glue gun a perfect choice for small, detailed projects.",
         "img": "https://i.ibb.co/gM20wFH/glueGun3.jpg",
         "price": 13,
-        "Quantity": 200
+        "quantity": 200
     },
     {
         "id": 5,
@@ -37,7 +37,7 @@
         "des": "About this item Suitable for paper and crafts purposes only Glue gun will not heat up enough to melt glue in AC Compatible glue stick ",
         "img": "https://i.ibb.co/DkY49KT/glueGun2.jpg",
         "price": 15,
-        "Quantity": 200
+        "quantity": 200
     },
     {
         "id": 6,
@@ -45,6 +45,6 @@
         "des": "Handy And Lightweight, Comfortable To Hold In Hand. Heats Quickly (3-5mins), No Waste Of Time. Color: Pink",
         "img": "https://i.ibb.co/X4mztTF/glue-gun-1.jpg",
         "price": 11,
-        "Quantity": 200
+        "quantity": 200
     }
 ]
