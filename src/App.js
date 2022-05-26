@@ -16,6 +16,8 @@ import SingleProduct from './pages/SingleProducts/SingleProduct';
 import RequirAuth from './pages/LogIn/RequirAuth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import UnAuthorized from './pages/UnAuthorized/UnAuthorized';
+import Forbidden from './pages/Forbidden/Forbidden';
 
 function App() {
   return (
@@ -38,6 +40,8 @@ function App() {
                 <SingleProduct/>
             </RequirAuth>
           }></Route>
+          <Route path='/unauthorized' element={<UnAuthorized/>}></Route>
+          <Route path='/forbidden' element={<Forbidden/>}></Route>
           <Route path='*' element={<PageNotFound/>}></Route>
         </Routes>
         <ToastContainer></ToastContainer>
