@@ -35,10 +35,32 @@ const MyOrders = () => {
             .then(data => setMyOrderd(data))
         }
     },[user]);
+
+    const handleDelete = (id) => {
+        const proceed = window.confirm('Are you sure to Delete');
+        if(proceed){
+            const url = `http://localhost:5000/user-orderd-data/${id}`;
+            fetch(url, {
+                method: 'DELETE'
+            })
+            .then(res => res.json())
+            .then(data => {
+                const remain = myOrderd.filter(item => item._id !== id);
+                console.log(data, myOrderd);
+                setMyOrderd(remain);
+            })
+        }
+    }
+
+    
     return (
         <div className='my-12'>
             {
-                myOrderd.map(orderdItem => <MyOrder key={orderdItem._id} orderdItem={orderdItem}></MyOrder>)
+                myOrderd.map(orderdItem => <MyOrder 
+                    key={orderdItem._id} 
+                    orderdItem={orderdItem} 
+                    handleDelete={handleDelete}
+                    ></MyOrder>)
             }
         </div>
     );

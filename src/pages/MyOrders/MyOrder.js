@@ -1,9 +1,10 @@
 import React from 'react';
 
-const MyOrder = ({orderdItem}) => {
-    const {img, name, price, quantity} = orderdItem;
+const MyOrder = ({orderdItem, handleDelete}) => {
+    const {_id, img, name, price, quantity} = orderdItem;
     const newQuantity = parseInt(quantity);
     const totalPrice = newQuantity * price;
+
     return (
         <div className='flex items-center border rounded-xl px-4 py-2 my-4 justify-between shadow-lg'>
             <div className="flex flex-4 items-center justify-between">
@@ -23,7 +24,7 @@ const MyOrder = ({orderdItem}) => {
                 </div>
             </div>
             <div className='flex items-center'>
-                <button className="btn btn-circle bg-red-800 text-white">
+                <button onClick={() => handleDelete(_id)} className="btn btn-circle bg-red-800 text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
                 <button className='btn px-6 ml-2 bg-green-600 border-none text-white'>Pay</button>
