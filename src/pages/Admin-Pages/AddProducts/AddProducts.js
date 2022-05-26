@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
 
 
 const AddProducts = () => {
@@ -8,6 +9,22 @@ const AddProducts = () => {
     const onSubmit = data =>{
         console.log(data)
         // reset();
+        fetch('http://localhost:5000/products', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.success){
+                toast.success('Thanks!! Post Completed ')
+                reset();
+            }
+        })
+
+
     };
     return (
         <div className="md:px-12 xl:px-12">
@@ -60,7 +77,6 @@ const AddProducts = () => {
                               className="textarea  input-bordered w-full h-24 mb-4"
                               {...register("des", {required: true,})}
                               />
-
                            {/* ------------------ Submit Button ------------------ */}
                            <input className="btn block w-32" type="submit" value={'Post'}/>
                       </div>
