@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
@@ -7,6 +7,15 @@ import { signOut } from 'firebase/auth';
 import './Navigation.css'
 
 const Navigation = () => {
+  // Use Navigate 
+  const navigate = useNavigate();
+
+  const logoClick = () => {
+    navigate('/')
+  }
+
+
+  // Get data use auth state
     const [user, loading] = useAuthState(auth);
     if(loading){
       return <Spinner></Spinner>
@@ -57,7 +66,7 @@ const Navigation = () => {
                 </ul>
               </div>
               <div>
-              <button className="btn btn-ghost normal-case text-xl border border-slate-100">Whole<span className='text-neutral'>S</span>ale<span className='text-neutral'>.</span><span><small className='text-xs'>shop</small></span></button>
+              <button onClick={logoClick} className="btn btn-ghost normal-case text-xl border border-slate-100">Whole<span className='text-neutral'>S</span>ale<span className='text-neutral'>.</span><span><small className='text-xs'>shop</small></span></button>
               </div>
             </div>
             <div className="navbar-end hidden lg:flex">
