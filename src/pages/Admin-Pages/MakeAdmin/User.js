@@ -6,8 +6,8 @@ const User = ({index, user}) => {
             <tr>
               <th>{index}</th>
               <td>{user.email}</td>
-              <td><button className='btn capitalize text-white'>Make Admin</button></td>
-              <td><button className='btn capitalize text-white'>Delete User</button></td>
+              <td><button className='btn btn-sm capitalize text-white'>Make Admin</button></td>
+              <td><button className='btn btn-sm capitalize text-white'>Delete User</button></td>
             </tr>
                 
     );
