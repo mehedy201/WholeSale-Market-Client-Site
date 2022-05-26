@@ -38,7 +38,6 @@ function App() {
           <Route path='/profile' element={<Profile/>}></Route>
           <Route path='/dashboard' element={<Dashboard/>}>
             <Route index element={<MakeAdmin></MakeAdmin>}></Route>
-            <Route path='all-users' element={<MakeAdmin></MakeAdmin>}></Route>
             <Route path='add-product' element={<AddProducts></AddProducts>}></Route>
             <Route path='manage-product' element={<ManageProducts></ManageProducts>}></Route>
             <Route path='manage-order' element={<ManageOrders></ManageOrders>}></Route>
