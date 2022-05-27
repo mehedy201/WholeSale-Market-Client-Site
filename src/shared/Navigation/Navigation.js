@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Spinner from '../Spinner/Spinner';
 import { signOut } from 'firebase/auth';
 import './Navigation.css'
-import useAdmin from '../../hooks/useAdmin';
+import useAdmin from '../../hooks/useAdmin'
 
 const Navigation = () => {
   // Use Navigate 
@@ -16,16 +16,19 @@ const Navigation = () => {
   }
   // Get data use auth state
   const [user, loading] = useAuthState(auth);
+  const [admin] = useAdmin(user);
   
   if(loading){
     return <Spinner></Spinner>
   }  
   
+  console.log(admin)
   // Sign Out button 
   const singOutButton = () => {
     signOut(auth);
     navigate('/')
   }
+
   
  
 
@@ -34,14 +37,22 @@ const Navigation = () => {
         <li><Link to={'/'}>Home</Link></li>
         <li><Link to={'/shop'}>Shop</Link></li>
         <li><Link to={'/blog'}>Blog</Link></li>
-        {
-          user && <>
-            <li><Link to={'/my-orders'}>My Orders</Link></li>
-            <li><Link to={'/add-review'}>Add a Review</Link></li>
+         {
+           admin?<>
             <li><Link to={'/profile'}>Profile</Link></li>
+            <li><Link to={'/dashboard'}>Dashboard</Link></li>
           </>
-        }
-         <li><Link to={'/dashboard'}>Dashboard</Link></li>
+           :
+           <>
+            {
+              user && <>
+              <li><Link to={'/my-orders'}>My Orders</Link></li>
+              <li><Link to={'/add-review'}>Add a Review</Link></li>
+              <li><Link to={'/profile'}>Profile</Link></li>
+              </>
+            }
+            </>
+         }
         {
           user? <li><button onClick={singOutButton}>Sing Out</button></li>
           :

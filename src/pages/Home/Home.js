@@ -21,9 +21,7 @@ const Home = () => {
     const navigate = useNavigate();
 
     // Get User Review
-    const [reviews] = useReview();
-    console.log(reviews);
-   
+    const [reviews] = useReview();   
 
     return (
         <div>

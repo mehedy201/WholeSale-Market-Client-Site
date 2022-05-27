@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Product = ({product}) => {
-    const {img, name} = product
+const Product = ({product, handleDelete}) => {
+    const {_id, img, name} = product
     return (
             <div className='flex items-center justify-between border p-2 rounded-lg'>
                 <div className='flex items-center'>
@@ -10,7 +10,7 @@ const Product = ({product}) => {
                 </div>
                 <div>
                     <button className='btn btn-sm text-white capitalize'>Update Product</button>
-                    <button className='btn btn-sm ml-2 bg-red-900 text-white capitalize'>Delete Product</button>
+                    <button onClick={() => handleDelete(_id)} className='btn btn-sm ml-2 bg-red-900 text-white capitalize'>Delete Product</button>
                 </div>
             </div>
     );
