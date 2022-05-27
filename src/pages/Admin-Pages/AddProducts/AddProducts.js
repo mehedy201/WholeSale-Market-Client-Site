@@ -4,11 +4,10 @@ import { toast } from 'react-toastify';
 
 
 const AddProducts = () => {
-
+    // React Hooks Form
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = data =>{
-        console.log(data)
-        // reset();
+        // Send Product Data to server
         fetch('http://localhost:5000/products', {
             method: 'POST',
             headers: {
@@ -23,12 +22,12 @@ const AddProducts = () => {
                 reset();
             }
         })
-
-
     };
+
+
     return (
         <div className="md:px-12 xl:px-12">
-            <h2 className="text-2xl font-semibold text-center my-2">Post Product</h2>
+            <h2 className="text-2xl font-semibold my-2">Post Product</h2>
             <div className='w-full'>
                     <form onSubmit={handleSubmit(onSubmit)}>
                       <div className="form-control w-full">
@@ -38,7 +37,7 @@ const AddProducts = () => {
                               type="text" 
                               name='name'
                               placeholder="Product Title" 
-                              className="input input-bordered w-full mb-4 rounded-none"
+                              className="input input-bordered w-full h-10 mb-4 rounded-md"
                               {...register("name", { required: true })} 
                               />
                           {/* ------------------ Product Price ------------------ */}
@@ -47,7 +46,7 @@ const AddProducts = () => {
                               type="number" 
                               name='price'
                               placeholder="Product Price" 
-                              className="input input-bordered w-full mb-4 rounded-none"
+                              className="input input-bordered w-full h-10 mb-4 rounded-md"
                               {...register("price", { required: true })} 
                               />
                            {/* ------------------ Product Quantity ------------------ */}
@@ -56,7 +55,7 @@ const AddProducts = () => {
                               type="number"
                               name='quantity' 
                               placeholder="Product Quantity (Min: 100)" 
-                              className="input input-bordered w-full mb-4 rounded-none"
+                              className="input input-bordered w-full h-10 mb-4 rounded-md"
                               {...register("quantity", {required: true,})}
                               />
                            {/* ------------------ Product Image Link ------------------ */}
@@ -65,7 +64,7 @@ const AddProducts = () => {
                               type="text"
                               name='img' 
                               placeholder="Product Image Link" 
-                              className="input input-bordered w-full mb-4 rounded-none"
+                              className="input input-bordered w-full h-10 mb-4 rounded-md"
                               {...register("img", {required: true,})}
                               />
                            {/* ------------------ Product Description ------------------ */}
@@ -78,7 +77,7 @@ const AddProducts = () => {
                               {...register("des", {required: true,})}
                               />
                            {/* ------------------ Submit Button ------------------ */}
-                           <input className="btn block w-32" type="submit" value={'Post'}/>
+                           <input className="btn btn-sm text-white block w-32" type="submit" value={'Post'}/>
                       </div>
                   </form>
             </div>

@@ -1,30 +1,33 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Spinner from '../Spinner/Spinner';
 import { signOut } from 'firebase/auth';
 import './Navigation.css'
+import useAdmin from '../../hooks/useAdmin';
 
 const Navigation = () => {
   // Use Navigate 
-  const navigate = useNavigate();
+  const navigate = useNavigate(auth);
 
   const logoClick = () => {
     navigate('/')
   }
-
-
   // Get data use auth state
-    const [user, loading] = useAuthState(auth);
-    if(loading){
-      return <Spinner></Spinner>
-    }
-
-    // Sign Out button 
-    const singOutButton = () => {
-      signOut(auth);
-    }
+  const [user, loading] = useAuthState(auth);
+  
+  if(loading){
+    return <Spinner></Spinner>
+  }  
+  
+  // Sign Out button 
+  const singOutButton = () => {
+    signOut(auth);
+    navigate('/')
+  }
+  
+ 
 
     // Navigation Items
     const menuItems = <>
@@ -38,7 +41,7 @@ const Navigation = () => {
             <li><Link to={'/profile'}>Profile</Link></li>
           </>
         }
-        <li><Link to={'/dashboard'}>Dashboard</Link></li>
+         <li><Link to={'/dashboard'}>Dashboard</Link></li>
         {
           user? <li><button onClick={singOutButton}>Sing Out</button></li>
           :

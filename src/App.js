@@ -14,14 +14,15 @@ import Navigation from './shared/Navigation/Navigation';
 import PageNotFound from './pages/PageNotFound';
 import SingleProduct from './pages/SingleProducts/SingleProduct';
 import RequirAuth from './pages/LogIn/RequirAuth';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import UnAuthorized from './pages/UnAuthorized/UnAuthorized';
 import Forbidden from './pages/Forbidden/Forbidden';
 import MakeAdmin from './pages/Admin-Pages/MakeAdmin/MakeAdmin';
 import AddProducts from './pages/Admin-Pages/AddProducts/AddProducts';
 import ManageProducts from './pages/Admin-Pages/ManageProducts/ManageProducts';
 import ManageOrders from './pages/Admin-Pages/ManageOrders/ManageOrders';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import AllReviews from './pages/AllReveiws/AllReviews';
 
 function App() {
   return (
@@ -36,8 +37,10 @@ function App() {
           <Route path='/my-orders' element={<MyOrders/>}></Route>
           <Route path='/add-review' element={<AddReview/>}></Route>
           <Route path='/profile' element={<Profile/>}></Route>
+          <Route path='/reviews' element={<AllReviews/>}></Route>
           <Route path='/dashboard' element={<Dashboard/>}>
             <Route index element={<MakeAdmin></MakeAdmin>}></Route>
+            <Route path='all-users' element={<MakeAdmin></MakeAdmin>}></Route>
             <Route path='add-product' element={<AddProducts></AddProducts>}></Route>
             <Route path='manage-product' element={<ManageProducts></ManageProducts>}></Route>
             <Route path='manage-order' element={<ManageOrders></ManageOrders>}></Route>

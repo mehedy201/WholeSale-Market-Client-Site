@@ -4,7 +4,8 @@ import heroImg from '../../images/heroimg.jpeg'
 import Product from '../Shop/Product';
 import { useNavigate } from 'react-router-dom';
 import AboutCompany from './AboutCompany';
-import Carousel from './Carousel';
+import useReview from '../../hooks/useReview';
+import Reviews from './Reviews';
 
 const Home = () => {
     // useState for product
@@ -18,6 +19,10 @@ const Home = () => {
 
     // Navigate Shop page
     const navigate = useNavigate();
+
+    // Get User Review
+    const [reviews] = useReview();
+    console.log(reviews);
    
 
     return (
@@ -28,17 +33,17 @@ const Home = () => {
                       <img src={heroImg} className="rounded-lg" alt='Hero_image'/>
                   </div>
                   <div className='flex-1 pe-12'>
-                    <h1 className="text-5xl font-bold">Best Glue gun 2022!</h1>
+                    <h1 className="text-5xl font-bold">Best Glue gun <span className='text-primary'>2022</span>!</h1>
                     <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    <button className="btn btn-primary">Get Started</button>
+                    <button onClick={() => navigate('/shop')} className="btn btn-primary capitalize">Buy Now</button>
                   </div>
                 </div>
             </div>
             <div>
-                <h2 className="text-2xl font-bold text-center mt-12 mb-6">Shop</h2>
+                <h2 className="text-4xl font-bold text-center mt-16 mb-6 text-primary">Shop</h2>
                 <div className='my-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12'>
                     {
-                        products.slice(3).map(product => 
+                        products.slice(0,3).map(product => 
                             <Product
                                 key={product._id}
                                 product={product}
@@ -55,7 +60,19 @@ const Home = () => {
             } */}
             </div>
             <AboutCompany></AboutCompany>
-            <Carousel></Carousel>
+            <div>
+                <h2 className="text-4xl font-bold text-center mt-16 mb-6 text-primary">Our Company Reviews</h2>
+                <div className='my-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 '>
+                    {
+                        reviews.slice(0,3).map(review => <Reviews
+                            key={review._id}
+                            review={review}
+                        ></Reviews>)
+                    }
+                </div>
+                <button onClick={() => navigate('/reviews')} className='btn mb-12 block mx-auto capitalize'>All Reviews</button>
+            </div>
+            
         </div>
     );
 };
