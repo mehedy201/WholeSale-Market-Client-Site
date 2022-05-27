@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
@@ -37,34 +37,25 @@ const Navigation = () => {
         <li><Link to={'/'}>Home</Link></li>
         <li><Link to={'/shop'}>Shop</Link></li>
         <li><Link to={'/blog'}>Blog</Link></li>
-         {
-           admin?<>
-            <li><Link to={'/profile'}>Profile</Link></li>
-            <li><Link to={'/dashboard'}>Dashboard</Link></li>
+        {
+          admin && user &&<>
+          <li><Link to={'/profile'}>Profile</Link></li>
+          <li><Link to={'/dashboard'}>Dashboard</Link></li>
           </>
-           :
-           <>
-            {
-              user && <>
-              <li><Link to={'/my-orders'}>My Orders</Link></li>
-              <li><Link to={'/add-review'}>Add a Review</Link></li>
-              <li><Link to={'/profile'}>Profile</Link></li>
-              </>
-            }
-            </>
-         }
+        }
+        {
+          !admin && user &&<>
+          <li><Link to={'/my-orders'}>My Orders</Link></li>
+          <li><Link to={'/add-review'}>Add a Review</Link></li>
+          <li><Link to={'/profile'}>Profile</Link></li>
+          </>
+        }
         {
           user? <li><button onClick={singOutButton}>Sing Out</button></li>
           :
           <li><Link to={'/log-in'}>Log In</Link></li>
         }
     </>
-    // Use Navigate from Reack router
-    // const navigate = useNavigate();
-    // // Logo Click handlar 
-    // const logoClick = () =>{
-    //     navigate('/');
-    // }
 
         
     
