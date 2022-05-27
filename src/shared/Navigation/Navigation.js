@@ -22,15 +22,11 @@ const Navigation = () => {
     return <Spinner></Spinner>
   }  
   
-  console.log(admin)
   // Sign Out button 
   const singOutButton = () => {
     signOut(auth);
     navigate('/')
   }
-
-  
- 
 
     // Navigation Items
     const menuItems = <>

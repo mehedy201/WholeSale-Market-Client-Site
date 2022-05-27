@@ -23,8 +23,14 @@ import ManageOrders from './pages/Admin-Pages/ManageOrders/ManageOrders';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AllReviews from './pages/AllReveiws/AllReviews';
+import useAdmin from './hooks/useAdmin';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from './firebase.init';
 
 function App() {
+
+  const [user] = useAuthState(auth)
+  const [admin] = useAdmin()
   return (
     <div>
       <Navigation></Navigation>
@@ -34,17 +40,25 @@ function App() {
           <Route path='/home' element={<Home/>}></Route>
           <Route path='/shop' element={<Shop/>}></Route>
           <Route path='/blog' element={<Blog/>}></Route>
-          <Route path='/my-orders' element={<MyOrders/>}></Route>
-          <Route path='/add-review' element={<AddReview/>}></Route>
-          <Route path='/profile' element={<Profile/>}></Route>
-          <Route path='/reviews' element={<AllReviews/>}></Route>
-          <Route path='/dashboard' element={<Dashboard/>}>
-            <Route index element={<MakeAdmin></MakeAdmin>}></Route>
-            <Route path='all-users' element={<MakeAdmin></MakeAdmin>}></Route>
-            <Route path='add-product' element={<AddProducts></AddProducts>}></Route>
-            <Route path='manage-product' element={<ManageProducts></ManageProducts>}></Route>
-            <Route path='manage-order' element={<ManageOrders></ManageOrders>}></Route>
-          </Route>
+          {
+            user && <>
+              <Route path='/my-orders' element={<MyOrders/>}></Route>
+              <Route path='/add-review' element={<AddReview/>}></Route>
+              <Route path='/profile' element={<Profile/>}></Route>
+              <Route path='/reviews' element={<AllReviews/>}></Route>
+            </>
+          }
+          {
+            admin && user && <>
+            <Route path='/dashboard' element={<Dashboard/>}>
+              <Route index element={<MakeAdmin></MakeAdmin>}></Route>
+              <Route path='all-users' element={<MakeAdmin></MakeAdmin>}></Route>
+              <Route path='add-product' element={<AddProducts></AddProducts>}></Route>
+              <Route path='manage-product' element={<ManageProducts></ManageProducts>}></Route>
+              <Route path='manage-order' element={<ManageOrders></ManageOrders>}></Route>
+            </Route>
+            </>
+          }
           <Route path='/log-in' element={<LogIn/>}></Route>
           <Route path='/sign-up' element={<SingUp/>}></Route>
           <Route path='/product/:id' element={
