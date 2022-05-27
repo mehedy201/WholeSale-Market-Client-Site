@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import Spinner from '../../../shared/Spinner/Spinner';
 // import { useQuery } from 'react-query';
@@ -6,7 +5,7 @@ import User from './User';
 
 const MakeAdmin = () => {
 
-    const {data: users, isLoading, refetch} = useQuery('users', () => fetch('http://localhost:5000/user',{
+    const {data: users, isLoading, refetch} = useQuery('users', () => fetch('https://glacial-beyond-96799.herokuapp.com/user',{
         method: 'GET',
             headers: {
             'autherization': `Bearer ${localStorage.getItem('token')}`

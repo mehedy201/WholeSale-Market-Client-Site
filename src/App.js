@@ -40,16 +40,10 @@ function App() {
           <Route path='/home' element={<Home/>}></Route>
           <Route path='/shop' element={<Shop/>}></Route>
           <Route path='/blog' element={<Blog/>}></Route>
-          {
-            user && <>
-              <Route path='/my-orders' element={<MyOrders/>}></Route>
-              <Route path='/add-review' element={<AddReview/>}></Route>
-              <Route path='/profile' element={<Profile/>}></Route>
-              <Route path='/reviews' element={<AllReviews/>}></Route>
-            </>
-          }
-          {
-            admin && user && <>
+          <Route path='/my-orders' element={<MyOrders/>}></Route>
+          <Route path='/add-review' element={<AddReview/>}></Route>
+          <Route path='/profile' element={<Profile/>}></Route>
+          <Route path='/reviews' element={<AllReviews/>}></Route>
             <Route path='/dashboard' element={<Dashboard/>}>
               <Route index element={<MakeAdmin></MakeAdmin>}></Route>
               <Route path='all-users' element={<MakeAdmin></MakeAdmin>}></Route>
@@ -57,8 +51,6 @@ function App() {
               <Route path='manage-product' element={<ManageProducts></ManageProducts>}></Route>
               <Route path='manage-order' element={<ManageOrders></ManageOrders>}></Route>
             </Route>
-            </>
-          }
           <Route path='/log-in' element={<LogIn/>}></Route>
           <Route path='/sign-up' element={<SingUp/>}></Route>
           <Route path='/product/:id' element={

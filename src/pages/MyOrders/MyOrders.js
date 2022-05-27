@@ -15,7 +15,7 @@ const MyOrders = () => {
     const [myOrderd, setMyOrderd] = useState([]);
     useEffect(() => {
         if(user){
-            fetch(`http://localhost:5000/user-orderd-data?email=${user.email}`, {
+            fetch(`https://glacial-beyond-96799.herokuapp.com/user-orderd-data?email=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'autherization': `Bearer ${localStorage.getItem('token')}`
@@ -39,7 +39,7 @@ const MyOrders = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure to Delete');
         if(proceed){
-            const url = `http://localhost:5000/user-orderd-data/${id}`;
+            const url = `https://glacial-beyond-96799.herokuapp.com/user-orderd-data/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

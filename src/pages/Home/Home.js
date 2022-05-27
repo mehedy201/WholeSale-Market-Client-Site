@@ -12,7 +12,7 @@ const Home = () => {
     const [products, setProducts] = useState([]);
     // Use effect and fetch product
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://glacial-beyond-96799.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data));
     }, []);
@@ -50,12 +50,6 @@ const Home = () => {
                     }
                 </div>
                 <button onClick={() => navigate('/shop')} className='btn mb-12 block mx-auto capitalize'>All Products</button>
-                {/* {
-                    addedForModal && <PurcessModal 
-                    key={addedForModal._id}
-                    addedForModal={addedForModal}
-                ></PurcessModal>
-            } */}
             </div>
             <AboutCompany></AboutCompany>
             <div>
