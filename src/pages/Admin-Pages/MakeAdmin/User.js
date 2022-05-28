@@ -27,12 +27,14 @@ const User = ({index, user, refetch}) => {
   }
   
     return (
+          <tbody>
             <tr>
               <th>{index}</th>
               <td>{email}</td>
               <td>{role !== 'admin' && <button onClick={makeAdmin} className='btn btn-sm capitalize text-white'>Make Admin</button>}</td>
               <td><button className='btn btn-sm capitalize text-white'>Delete User</button></td>
-            </tr>                
+            </tr>   
+          </tbody>             
     );
 };
 

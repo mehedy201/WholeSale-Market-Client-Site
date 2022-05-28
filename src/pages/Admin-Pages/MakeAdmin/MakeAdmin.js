@@ -27,7 +27,7 @@ const MakeAdmin = () => {
                       <th className='font-semibold capitalize'>Delete User</th>
                     </tr>
                 </thead>
-                <tbody>
+                
                     {
                         users.map((user, index) => <User 
                             key={user._id} 
@@ -36,7 +36,6 @@ const MakeAdmin = () => {
                             refetch={refetch}
                         ></User>)
                     }
-                </tbody>
                 </table>
             </div>
     );

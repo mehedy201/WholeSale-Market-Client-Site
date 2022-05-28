@@ -18,6 +18,7 @@ const PurcessModal = ({modalProducts, setModalProducts}) => {
         if(quantity < 100){
             return alert('please add 100+ itms becouse its wholesale market')
         }
+        
         const userPhone = event.target.user_phone.value;
         const orderdedUserData = {name, userName, userEmail, price, quantity, userPhone, img};
 

@@ -11,11 +11,14 @@ const MyOrders = () => {
 
     // Use Auth State
     const [user] = useAuthState(auth);
+    // console.log(user)
     // Use state for get order data
     const [myOrderd, setMyOrderd] = useState([]);
     useEffect(() => {
         if(user){
-            fetch(`https://glacial-beyond-96799.herokuapp.com/user-orderd-data?email=${user.email}`, {
+            // https://glacial-beyond-96799.herokuapp.com/
+            // https://glacial-beyond-96799.herokuapp.com
+            fetch(`https://glacial-beyond-96799.herokuapp.com/userOrder?email=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'autherization': `Bearer ${localStorage.getItem('token')}`

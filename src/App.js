@@ -26,6 +26,7 @@ import AllReviews from './pages/AllReveiws/AllReviews';
 import useAdmin from './hooks/useAdmin';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './firebase.init';
+import UpdateProduct from './pages/Admin-Pages/ManageProducts/UpdateProduct';
 
 function App() {
 
@@ -50,6 +51,7 @@ function App() {
               <Route path='add-product' element={<AddProducts></AddProducts>}></Route>
               <Route path='manage-product' element={<ManageProducts></ManageProducts>}></Route>
               <Route path='manage-order' element={<ManageOrders></ManageOrders>}></Route>
+              <Route path='update-product/:id' element={<UpdateProduct></UpdateProduct>}></Route>
             </Route>
           <Route path='/log-in' element={<LogIn/>}></Route>
           <Route path='/sign-up' element={<SingUp/>}></Route>

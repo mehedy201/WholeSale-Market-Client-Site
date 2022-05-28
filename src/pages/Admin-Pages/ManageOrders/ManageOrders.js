@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AllUsersOrders from './AllUsersOrders';
 
 const ManageOrders = () => {
     // Use Navigate
@@ -7,24 +8,25 @@ const ManageOrders = () => {
     // UseState for orderd Data
     const [orderdData, setOrderdData] = useState([]);
 
-    // fetch('https://glacial-beyond-96799.herokuapp.com/user-orderd-data', {
-    //     method: 'GET',
-    //     headers: {
-    //         'autherization': `Bearer ${localStorage.getItem('token')}`
-    //     }
-    // })
-    // .then(res => {
-    //     if(res.status === 401){
-    //         return navigate('/unauthorized')
-    //     }
-    //     else if(res.status === 403){
-    //         return navigate('/forbidden')
-    //     }
-    //     else{
-    //         return res.json()
-    //     }
-    // })
-    // .then(data => console.log(data));
+    // https://glacial-beyond-96799.herokuapp.com/user-orderd-data
+    fetch('https://glacial-beyond-96799.herokuapp.com/user-orderd-data', {
+        method: 'GET',
+        headers: {
+            'autherization': `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+    .then(res => {
+        if(res.status === 401){
+            return navigate('/unauthorized')
+        }
+        else if(res.status === 403){
+            return navigate('/forbidden')
+        }
+        else{
+            return res.json()
+        }
+    })
+    .then(data => setOrderdData(data));
 
     
     return (
@@ -43,14 +45,13 @@ const ManageOrders = () => {
                     </tr>
                 </thead>
                     <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td>Product Img</td>
-                            <td>Product Name</td>
-                            <td>Email</td>
-                            <td>Update Status</td>
-                            <td><button className='btn btn-sm capitalize text-white'>Delete</button></td>
-                        </tr>
+                        {
+                            orderdData.map((data, index) => <AllUsersOrders 
+                                key={data._id} 
+                                data={data}
+                                index={index}
+                            ></AllUsersOrders>)
+                        }
                     </tbody>
                 </table>
             </div>
