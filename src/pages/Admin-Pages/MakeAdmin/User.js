@@ -1,12 +1,12 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 
-const User = ({index, user, refetch}) => {
+const User = ({index, user, handleDelete}) => {
 
-  const {email, role} = user;
+  const {email, role, _id} = user;
 
   const makeAdmin = () => {
-    fetch(`http://localhost:5000/user/admin/${email}`,{
+    fetch(`https://glacial-beyond-96799.herokuapp.com/user/admin/${email}`,{
       method: 'PUT',
       headers: {
         autherization: `Bearer ${localStorage.getItem('token')}`
@@ -20,18 +20,19 @@ const User = ({index, user, refetch}) => {
     })
     .then(data => {
       if(data.modifiedCount > 0){
-        refetch();
+        // refetch();
         toast.success('This Person NOW admin')
       }
     })
   }
+  
   
     return (
             <tr>
               <th>{index}</th>
               <td>{email}</td>
               <td>{role !== 'admin' && <button onClick={makeAdmin} className='btn btn-sm capitalize text-white'>Make Admin</button>}</td>
-              <td><button className='btn btn-sm capitalize text-white'>Delete User</button></td>
+              <td><button onClick={() => handleDelete(_id)} className='btn btn-sm capitalize text-white'>Delete User</button></td>
             </tr>   
     );
 };

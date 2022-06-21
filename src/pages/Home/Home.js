@@ -12,7 +12,7 @@ const Home = () => {
     const [products, setProducts] = useState([]);
     // Use effect and fetch product
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://glacial-beyond-96799.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data));
     }, []);

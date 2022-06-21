@@ -8,8 +8,8 @@ const ManageOrders = () => {
     // UseState for orderd Data
     const [orderdData, setOrderdData] = useState([]);
 
-    // http://localhost:5000/user-orderd-data
-    fetch('http://localhost:5000/user-orderd-data', {
+    // https://glacial-beyond-96799.herokuapp.com/user-orderd-data
+    fetch('https://glacial-beyond-96799.herokuapp.com/user-orderd-data', {
         method: 'GET',
         headers: {
             'autherization': `Bearer ${localStorage.getItem('token')}`
@@ -27,6 +27,27 @@ const ManageOrders = () => {
         }
     })
     .then(data => setOrderdData(data));
+
+
+    const handleDelete = (id) => {
+        const proceed = window.confirm('Are you sure to Delete');
+        if(proceed){
+            const url = `https://glacial-beyond-96799.herokuapp.com/user-orderd-data/${id}`;
+            fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    'autherization': `Baerer ${localStorage.getItem('token')}`
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                const remain = orderdData.filter(order => order._id !== id);
+                // console.log(data, products);
+                setOrderdData(remain);
+            })
+        }
+    }
+
 
     
     return (
@@ -50,6 +71,7 @@ const ManageOrders = () => {
                                 key={data._id} 
                                 data={data}
                                 index={index}
+                                handleDelete={handleDelete}
                             ></AllUsersOrders>)
                         }
                     </tbody>

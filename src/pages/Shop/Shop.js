@@ -7,8 +7,8 @@ const Shop = () => {
     // const [addedForModal, setAddedForModal] = useState(null);
 
     useEffect(() => {
-        // http://localhost:5000/products
-        fetch('http://localhost:5000/products')
+        // https://glacial-beyond-96799.herokuapp.com/products
+        fetch('https://glacial-beyond-96799.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data));
     }, [])

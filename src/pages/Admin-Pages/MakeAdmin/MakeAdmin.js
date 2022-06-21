@@ -1,20 +1,61 @@
-import { useQuery } from 'react-query';
-import Spinner from '../../../shared/Spinner/Spinner';
+import { useEffect, useState } from 'react';
+// import { useQuery } from 'react-query';
+// import Spinner from '../../../shared/Spinner/Spinner';
 // import { useQuery } from 'react-query';
 import User from './User';
 
 const MakeAdmin = () => {
 
-    const {data: users, isLoading, refetch} = useQuery('users', () => fetch('http://localhost:5000/user',{
-        method: 'GET',
-            headers: {
-            'autherization': `Bearer ${localStorage.getItem('token')}`
-        }
-    }).then(res => res.json()))
+
+    // const {data: users, isLoading, refetch} = useQuery('users', () => fetch('https://glacial-beyond-96799.herokuapp.com/user',{
+    //     method: 'GET',
+    //         headers: {
+    //         'autherization': `Bearer ${localStorage.getItem('token')}`
+    //     }
+    // }).then(res => res.json()))
+
     
-    if(isLoading){
-        return <Spinner></Spinner>
+
+   
+    // if(isLoading){
+    //     return <Spinner></Spinner>
+    // }
+
+    const [users, setUsers] = useState([])
+
+    useEffect(() => {
+        fetch('https://glacial-beyond-96799.herokuapp.com/user', {
+            method: 'GET',
+            headers: {
+                'autherization': `Baerer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setUsers(data));
+    }, [])
+
+    const handleDelete = (id) => {
+        const proceed = window.confirm('Are you sure to Delete');
+        if(proceed){
+            const url = `https://glacial-beyond-96799.herokuapp.com/user/${id}`;
+            fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    'autherization': `Baerer ${localStorage.getItem('token')}`
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                const remain = users.filter(user => user._id !== id);
+                // console.log(data, products);
+                setUsers(remain);
+            })
+        }
     }
+
+
+
+
     return (
             <div>
                 <h2 className='text-2xl font-semibold mb-2'>All Users</h2>
@@ -33,7 +74,7 @@ const MakeAdmin = () => {
                             key={user._id} 
                             index={index} 
                             user={user}
-                            refetch={refetch}
+                            handleDelete={handleDelete}
                         ></User>)
                     }
                 </tbody>
