@@ -7,7 +7,7 @@ const ManageProducts = () => {
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-        fetch('https://glacial-beyond-96799.herokuapp.com/products')
+        fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => setProducts(data));
     }, [])
@@ -15,7 +15,7 @@ const ManageProducts = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure to Delete');
         if(proceed){
-            const url = `https://glacial-beyond-96799.herokuapp.com/products/${id}`;
+            const url = `http://localhost:5000/products/${id}`;
             fetch(url, {
                 method: 'DELETE',
                 headers: {

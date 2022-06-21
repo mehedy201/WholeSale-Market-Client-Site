@@ -8,8 +8,8 @@ const ManageOrders = () => {
     // UseState for orderd Data
     const [orderdData, setOrderdData] = useState([]);
 
-    // https://glacial-beyond-96799.herokuapp.com/user-orderd-data
-    fetch('https://glacial-beyond-96799.herokuapp.com/user-orderd-data', {
+    // http://localhost:5000/user-orderd-data
+    fetch('http://localhost:5000/user-orderd-data', {
         method: 'GET',
         headers: {
             'autherization': `Bearer ${localStorage.getItem('token')}`

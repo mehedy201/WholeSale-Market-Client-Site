@@ -30,7 +30,6 @@ const Navigation = () => {
     // Navigation Items
     const menuItems = <>
         <li><Link to={'/'}>Home</Link></li>
-        <li><Link to={'/shop'}>Shop</Link></li>
         <li><Link to={'/blog'}>Blog</Link></li>
         {
           admin && user &&<>
@@ -40,6 +39,7 @@ const Navigation = () => {
         }
         {
           !admin && user &&<>
+          <li><Link to={'/shop'}>Shop</Link></li>
           <li><Link to={'/my-orders'}>My Orders</Link></li>
           <li><Link to={'/add-review'}>Add a Review</Link></li>
           <li><Link to={'/profile'}>Profile</Link></li>

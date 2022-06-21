@@ -12,14 +12,14 @@ const SingleProduct = () => {
     const [modalProducts, setModalProducts] = useState({})
     // Load Data
     useEffect(() => {
-        fetch(`https://glacial-beyond-96799.herokuapp.com/products/${id}`)
+        fetch(`http://localhost:5000/products/${id}`)
             .then(res => res.json())
             .then(data => setProducts(data));
     },[])
 
     // Use Effect for modal
     useEffect(() => {
-        fetch(`https://glacial-beyond-96799.herokuapp.com/products/${id}`)
+        fetch(`http://localhost:5000/products/${id}`)
             .then(res => res.json())
             .then(data => setModalProducts(data));
     },[])

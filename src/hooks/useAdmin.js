@@ -5,12 +5,11 @@ const useAdmin = user => {
     useEffect(() => {
         const email = user?.email;
         if(email){
-            fetch(`https://glacial-beyond-96799.herokuapp.com/admin/${email}`, {
+            fetch(`http://localhost:5000/admin/${email}`, {
                 mehtod: 'GET',
                 headers: {
                     headers: {
                         'content-type': 'application/json',
-                        autherization: `Bearer ${localStorage.getItem('token')}`
                     }
                 }
             })

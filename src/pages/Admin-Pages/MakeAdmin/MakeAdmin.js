@@ -5,7 +5,7 @@ import User from './User';
 
 const MakeAdmin = () => {
 
-    const {data: users, isLoading, refetch} = useQuery('users', () => fetch('https://glacial-beyond-96799.herokuapp.com/user',{
+    const {data: users, isLoading, refetch} = useQuery('users', () => fetch('http://localhost:5000/user',{
         method: 'GET',
             headers: {
             'autherization': `Bearer ${localStorage.getItem('token')}`
@@ -27,7 +27,7 @@ const MakeAdmin = () => {
                       <th className='font-semibold capitalize'>Delete User</th>
                     </tr>
                 </thead>
-                
+                <tbody>
                     {
                         users.map((user, index) => <User 
                             key={user._id} 
@@ -36,7 +36,8 @@ const MakeAdmin = () => {
                             refetch={refetch}
                         ></User>)
                     }
-                </table>
+                </tbody>
+              </table>
             </div>
     );
 };

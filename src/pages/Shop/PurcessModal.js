@@ -23,7 +23,7 @@ const PurcessModal = ({modalProducts, setModalProducts}) => {
         const orderdedUserData = {name, userName, userEmail, price, quantity, userPhone, img};
 
 
-        fetch('https://glacial-beyond-96799.herokuapp.com/user-orderd-data',{
+        fetch('http://localhost:5000/user-orderd-data',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
