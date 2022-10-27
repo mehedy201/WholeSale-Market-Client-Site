@@ -7,6 +7,7 @@ import AboutCompany from './AboutCompany';
 import useReview from '../../hooks/useReview';
 import Reviews from './Reviews';
 import axios from 'axios';
+import AfterHero from './AfterHero';
 
 const Home = () => {
     // useState for product
@@ -28,7 +29,7 @@ const Home = () => {
 
     return (
         <div>
-            <div className="hero min-h-screen">
+            <div className="hero">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                   <div className="flex-1">
                       <img src={heroImg} className="rounded-lg" alt='Hero_image'/>
@@ -36,10 +37,11 @@ const Home = () => {
                   <div className='flex-1 pe-12'>
                     <h1 className="text-5xl font-bold">Best Glue gun <span className='text-primary'>2022</span>!</h1>
                     <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    <button onClick={() => navigate('/shop')} className="btn btn-primary capitalize">Buy Now</button>
+                    <button onClick={() => navigate('/shop')} className="btn text-white capitalize bg-gradient-to-r from-cyan-500 to-blue-500 border-none">Buy Now</button>
                   </div>
                 </div>
             </div>
+            <AfterHero></AfterHero>
             <div>
                 <h2 className="text-4xl font-bold text-center mt-16 mb-6 text-primary">Shop</h2>
                 <div className='my-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12'>
@@ -52,7 +54,7 @@ const Home = () => {
                         )
                     }
                 </div>
-                <button onClick={() => navigate('/shop')} className='btn mb-12 block mx-auto capitalize'>All Products</button>
+                <button onClick={() => navigate('/shop')} className='btn mb-12 block mx-auto capitalize bg-gradient-to-r from-blue-500 to-cyan-500 text-white border-none'>All Products</button>
             </div>
             <AboutCompany></AboutCompany>
             <div>
@@ -65,7 +67,7 @@ const Home = () => {
                         ></Reviews>)
                     }
                 </div>
-                <button onClick={() => navigate('/reviews')} className='btn mb-12 block mx-auto capitalize'>All Reviews</button>
+                <button onClick={() => navigate('/reviews')} className='btn mb-12 block mx-auto capitalize bg-gradient-to-r from-blue-500 to-cyan-500 text-white border-none'>All Reviews</button>
             </div>
             
         </div>

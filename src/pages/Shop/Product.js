@@ -21,7 +21,7 @@ const Product = ({product}) => {
                   <div className="card-actions justify-end">
                     <label 
                         onClick={() => navigateSingleProduct(_id)} 
-                        className="btn modal-button capitalize">Added Orders</label>
+                        className="btn bg-gradient-to-r from-cyan-400 to-blue-400 capitalize border-none">Added Orders</label>
                   </div>
                 </div>
             </div>
