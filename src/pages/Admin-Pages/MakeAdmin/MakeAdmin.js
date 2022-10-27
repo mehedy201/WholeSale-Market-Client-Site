@@ -1,25 +1,7 @@
 import { useEffect, useState } from 'react';
-// import { useQuery } from 'react-query';
-// import Spinner from '../../../shared/Spinner/Spinner';
-// import { useQuery } from 'react-query';
 import User from './User';
 
 const MakeAdmin = () => {
-
-
-    // const {data: users, isLoading, refetch} = useQuery('users', () => fetch('https://glacial-beyond-96799.herokuapp.com/user',{
-    //     method: 'GET',
-    //         headers: {
-    //         'autherization': `Bearer ${localStorage.getItem('token')}`
-    //     }
-    // }).then(res => res.json()))
-
-    
-
-   
-    // if(isLoading){
-    //     return <Spinner></Spinner>
-    // }
 
     const [users, setUsers] = useState([])
 
@@ -31,8 +13,10 @@ const MakeAdmin = () => {
             }
         })
             .then(res => res.json())
-            .then(data => setUsers(data));
+            .then(data => console.log(data));
     }, [])
+
+    console.log(users)
 
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure to Delete');
@@ -76,7 +60,7 @@ const MakeAdmin = () => {
                             user={user}
                             handleDelete={handleDelete}
                         ></User>)
-                    }
+                    } 
                 </tbody>
               </table>
             </div>
