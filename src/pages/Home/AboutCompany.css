@@ -1,0 +1,10 @@
+.for_background_image{
+    background-image: url(../../images/achivment.jpg);
+    background-size: cover;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.for_background_overly{
+    background-color: black;
+    opacity: 0.8;
+}
