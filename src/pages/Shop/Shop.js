@@ -1,16 +1,14 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Product from './Product';
 // import PurcessModal from './PurcessModal';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
-    // const [addedForModal, setAddedForModal] = useState(null);
 
     useEffect(() => {
-        // https://glacial-beyond-96799.herokuapp.com/products
-        fetch('https://glacial-beyond-96799.herokuapp.com/products')
-            .then(res => res.json())
-            .then(data => setProducts(data));
+        axios.get('https://glacial-beyond-96799.herokuapp.com/products')
+            .then(data => setProducts(data.data))
     }, [])
 
     return (
@@ -24,15 +22,6 @@ const Shop = () => {
                     ></Product>)
                 }
             </div>
-
-
-            {/* For Modal 
-            {
-            addedForModal && <PurcessModal 
-                key={addedForModal._id}
-                addedForModal={addedForModal}
-            ></PurcessModal>
-            } */}
         </>
     );
 };

@@ -6,15 +6,18 @@ import { useNavigate } from 'react-router-dom';
 import AboutCompany from './AboutCompany';
 import useReview from '../../hooks/useReview';
 import Reviews from './Reviews';
+import axios from 'axios';
 
 const Home = () => {
     // useState for product
     const [products, setProducts] = useState([]);
     // Use effect and fetch product
     useEffect(() => {
-        fetch('https://glacial-beyond-96799.herokuapp.com/products')
-            .then(res => res.json())
-            .then(data => setProducts(data));
+        axios.get('https://glacial-beyond-96799.herokuapp.com/products')
+            .then(data => {
+                setProducts(data.data)
+                console.log(data)
+            });
     }, []);
 
     // Navigate Shop page
