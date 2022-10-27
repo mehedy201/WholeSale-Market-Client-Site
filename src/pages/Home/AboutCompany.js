@@ -15,17 +15,17 @@ const AboutCompany = () => {
                 <div className='grid grid-cols-1 lg:grid-cols-3 gap-12 rounded-lg mt-8'>
                     <div>
                         <span className='flex justify-center'><GiHumanTarget className='h-16 w-16 p-2 text-green-500'/></span>
-                        <span className='flex justify-center font-bold text-2xl text-green-500'><CountUp duration={2.75} className='font-bold text-6xl text-white' end={1000} />+</span>
+                        <span className='flex justify-center font-bold text-2xl text-green-500'><CountUp enableScrollSpy duration={2.75} className='font-bold text-6xl text-white' end={1000} />+</span>
                         <p className='text-2xl mt-2 font-semibold text-center text-white'>Customers</p>
                     </div>
                     <div>
                     <span className='flex justify-center'><MdOutlineReviews className='h-16 w-16 p-2 text-green-500'/></span>
-                    <span className='flex justify-center font-bold text-2xl text-green-500'><CountUp duration={2.75} className='font-bold text-6xl text-white' end={100} />K+</span>
+                    <span className='flex justify-center font-bold text-2xl text-green-500'><CountUp enableScrollSpy duration={2.75} className='font-bold text-6xl text-white' end={100} />K+</span>
                         <p className='text-2xl mt-2 font-semibold text-center text-white'>Reviews</p>
                     </div>
                     <div>
                         <span className='flex justify-center'><RiProductHuntLine className='h-16 w-16 p-2 text-green-500'/></span>
-                        <span className='flex justify-center font-bold text-2xl text-green-500'><CountUp duration={2.75} className='font-bold text-6xl text-white' end={1000} />+</span>
+                        <span className='flex justify-center font-bold text-2xl text-green-500'><CountUp enableScrollSpy duration={2.75} className='font-bold text-6xl text-white' end={1000} />+</span>
                         <p className='text-2xl mt-2 font-semibold text-center text-white'>Products</p>
                     </div>
                 </div>
