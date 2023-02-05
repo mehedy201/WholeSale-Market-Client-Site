@@ -16,9 +16,9 @@ const MyOrders = () => {
     const [myOrderd, setMyOrderd] = useState([]);
     useEffect(() => {
         if(user){
-            // https://glacial-beyond-96799.herokuapp.com/
-            // https://glacial-beyond-96799.herokuapp.com
-            fetch(`https://glacial-beyond-96799.herokuapp.com/userOrder?email=${user.email}`, {
+            // https://wholesale-server.onrender.com/
+            // https://wholesale-server.onrender.com
+            fetch(`https://wholesale-server.onrender.com/userOrder?email=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'autherization': `Bearer ${localStorage.getItem('token')}`
@@ -42,7 +42,7 @@ const MyOrders = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure to Delete');
         if(proceed){
-            const url = `https://glacial-beyond-96799.herokuapp.com/user-orderd-data/${id}`;
+            const url = `https://wholesale-server.onrender.com/user-orderd-data/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

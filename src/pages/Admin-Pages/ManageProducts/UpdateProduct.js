@@ -8,7 +8,7 @@ const UpdateProduct = () => {
     const [updatedProducts , setUpdatedProducts] = useState([]);
 
     useEffect(() => {
-        fetch(`https://glacial-beyond-96799.herokuapp.com/products/${id}`,{
+        fetch(`https://wholesale-server.onrender.com/products/${id}`,{
             method: 'GET',
             headers: {
             'autherization': `Bearer ${localStorage.getItem('token')}`

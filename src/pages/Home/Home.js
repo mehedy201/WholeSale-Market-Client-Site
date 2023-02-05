@@ -14,7 +14,7 @@ const Home = () => {
     const [products, setProducts] = useState([]);
     // Use effect and fetch product
     useEffect(() => {
-        axios.get('https://glacial-beyond-96799.herokuapp.com/products')
+        axios.get('https://wholesale-server.onrender.com/products')
             .then(data => {
                 setProducts(data.data)
                 console.log(data)

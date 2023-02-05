@@ -8,8 +8,8 @@ const ManageOrders = () => {
     // UseState for orderd Data
     const [orderdData, setOrderdData] = useState([]);
 
-    // https://glacial-beyond-96799.herokuapp.com/user-orderd-data
-    fetch('https://glacial-beyond-96799.herokuapp.com/user-orderd-data', {
+    // https://wholesale-server.onrender.com/user-orderd-data
+    fetch('https://wholesale-server.onrender.com/user-orderd-data', {
         method: 'GET',
         headers: {
             'autherization': `Bearer ${localStorage.getItem('token')}`
@@ -32,7 +32,7 @@ const ManageOrders = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure to Delete');
         if(proceed){
-            const url = `https://glacial-beyond-96799.herokuapp.com/user-orderd-data/${id}`;
+            const url = `https://wholesale-server.onrender.com/user-orderd-data/${id}`;
             fetch(url, {
                 method: 'DELETE',
                 headers: {

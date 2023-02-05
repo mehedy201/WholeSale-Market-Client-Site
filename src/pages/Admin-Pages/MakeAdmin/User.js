@@ -6,7 +6,7 @@ const User = ({index, user, handleDelete}) => {
   const {email, role, _id} = user;
 
   const makeAdmin = () => {
-    fetch(`https://glacial-beyond-96799.herokuapp.com/user/admin/${email}`,{
+    fetch(`https://wholesale-server.onrender.com/user/admin/${email}`,{
       method: 'PUT',
       headers: {
         autherization: `Bearer ${localStorage.getItem('token')}`

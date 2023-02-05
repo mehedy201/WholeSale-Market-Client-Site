@@ -8,7 +8,7 @@ const AddProducts = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = data =>{
         // Send Product Data to server
-        fetch('https://glacial-beyond-96799.herokuapp.com/products', {
+        fetch('https://wholesale-server.onrender.com/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

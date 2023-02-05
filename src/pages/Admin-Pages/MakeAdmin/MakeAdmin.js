@@ -6,7 +6,7 @@ const MakeAdmin = () => {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
-        fetch('https://glacial-beyond-96799.herokuapp.com/user', {
+        fetch('https://wholesale-server.onrender.com/user', {
             method: 'GET',
             headers: {
                 'autherization': `Baerer ${localStorage.getItem('token')}`
@@ -21,7 +21,7 @@ const MakeAdmin = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure to Delete');
         if(proceed){
-            const url = `https://glacial-beyond-96799.herokuapp.com/user/${id}`;
+            const url = `https://wholesale-server.onrender.com/user/${id}`;
             fetch(url, {
                 method: 'DELETE',
                 headers: {
